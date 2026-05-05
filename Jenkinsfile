@@ -1,33 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+        // Define any environment variables here
+        DOCKER_COMPOSE_COMMAND = "docker-compose" 
+    }
+
     stages {
-
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/MadanRayamajhi/mern-prod-project.git'
-            }
-        }
-
-        // 🔍 DEBUG STAGE (very important for your case)
-        stage('Debug Structure') {
-            steps {
-                sh '''
-                    echo "Current Directory:"
-                    pwd
-
-                    echo "Root Files:"
-                    ls -la
-
-                    echo "Frontend Folder:"
-                    ls -la frontend || true
-
-                    echo "Check package.json:"
-                    cat frontend/package.json || true
-                '''
-            }
-        }
-
         stage('Install Backend') {
             steps {
                 dir('backend') {
@@ -44,27 +23,26 @@ pipeline {
             }
         }
 
-    stage('Deploy') {
-    steps {
-        script {
-            // Attempt to use docker-compose (hyphenated)
-            // Use 'true' to prevent the pipeline from crashing if 'down' fails 
-            // (e.g., if it's the first time running)
-            sh 'docker-compose down || true'
-            sh 'docker-compose up --build -d'
+        stage('Deploy') {
+            steps {
+                script {
+                    // Using hyphenated docker-compose for older environments
+                    sh 'docker-compose down || true'
+                    sh 'docker-compose up --build -d'
+                }
+            }
         }
     }
-}
 
     post {
-        success {
-            echo "✔ SUCCESS"
-        }
-        failure {
-            echo "❌ FAILED"
-        }
         always {
             cleanWs()
         }
+        success {
+            echo '✅ Deployment Successful'
+        }
+        failure {
+            echo '❌ FAILED'
+        }
     }
-}
+} 
