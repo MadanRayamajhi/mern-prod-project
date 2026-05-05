@@ -9,6 +9,25 @@ pipeline {
             }
         }
 
+        // 🔍 DEBUG STAGE (very important for your case)
+        stage('Debug Structure') {
+            steps {
+                sh '''
+                    echo "Current Directory:"
+                    pwd
+
+                    echo "Root Files:"
+                    ls -la
+
+                    echo "Frontend Folder:"
+                    ls -la frontend || true
+
+                    echo "Check package.json:"
+                    cat frontend/package.json || true
+                '''
+            }
+        }
+
         stage('Install Backend') {
             steps {
                 dir('backend') {
@@ -27,8 +46,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker-compose down || true'
-                sh 'docker-compose up -d --build'
+                sh '''
+                    docker compose down || true
+                    docker compose up -d --build
+                '''
             }
         }
     }
@@ -39,6 +60,9 @@ pipeline {
         }
         failure {
             echo "❌ FAILED"
+        }
+        always {
+            cleanWs()
         }
     }
 }
