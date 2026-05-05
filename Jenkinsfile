@@ -1,23 +1,28 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18'
+        }
+    }
 
     stages {
 
         stage('Checkout Code') {
             steps {
-                echo " Cloning repo..."
                 git branch: 'main', url: 'https://github.com/madanrayamajhi/mern-prod-project.git'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Backend Dependencies') {
             steps {
-                echo " Installing backend & frontend deps..."
-
                 dir('backend') {
                     sh 'npm install'
                 }
+            }
+        }
 
+        stage('Install Frontend Dependencies') {
+            steps {
                 dir('frontend') {
                     sh 'npm install'
                 }
@@ -26,8 +31,6 @@ pipeline {
 
         stage('Deploy with Docker Compose') {
             steps {
-                echo " Deploying full stack..."
-
                 sh 'docker-compose down || true'
                 sh 'docker-compose up -d --build'
             }
@@ -36,16 +39,9 @@ pipeline {
 
     post {
         success {
-            script {
-                currentBuild.description = "✔️ SUCCESS"
-            }
-            echo "✔️ CI/CD SUCCESS"
+            echo "✔ CI/CD SUCCESS"
         }
-
         failure {
-            script {
-                currentBuild.description = "❌ FAILED"
-            }
             echo "❌ CI/CD FAILED"
         }
     }
