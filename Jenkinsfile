@@ -44,15 +44,17 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                sh '''
-                    docker compose down || true
-                    docker compose up -d --build
-                '''
-            }
+    stage('Deploy') {
+    steps {
+        script {
+            // Attempt to use docker-compose (hyphenated)
+            // Use 'true' to prevent the pipeline from crashing if 'down' fails 
+            // (e.g., if it's the first time running)
+            sh 'docker-compose down || true'
+            sh 'docker-compose up --build -d'
         }
     }
+}
 
     post {
         success {
