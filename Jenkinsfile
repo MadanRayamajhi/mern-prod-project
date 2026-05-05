@@ -5,14 +5,18 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/madanrayamajhi/mern-prod-project.git'
+                git branch: 'main', url: 'https://github.com/MadanRayamajhi/mern-prod-project.git'
             }
         }
 
         stage('Install Backend') {
             steps {
                 dir('backend') {
-                    sh 'npm install'
+                    sh '''
+                        curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+                        apt-get install -y nodejs
+                        npm install
+                    '''
                 }
             }
         }
