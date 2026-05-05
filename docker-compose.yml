@@ -1,11 +1,14 @@
-version: '3.8' 
 services:
   backend:
-    build: ./backend
+    build:
+      context: .           # This tells Docker the build starts in the root
+      dockerfile: Dockerfile # This tells Docker to use the Dockerfile in the root
     ports:
       - "5000:5000"
+  
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend  # This remains the same as its Dockerfile is inside /frontend
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    
