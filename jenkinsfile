@@ -1,63 +1,34 @@
 pipeline {
     agent any
 
-    environment {
-        BACKEND_IMAGE = "mern-backend"
-        FRONTEND_IMAGE = "mern-frontend"
-    }
-
     stages {
 
         stage('Checkout Code') {
             steps {
-                echo "📥 Cloning GitHub repo..."
+                echo " Cloning repo..."
                 git branch: 'main', url: 'https://github.com/madanrayamajhi/mern-prod-project.git'
             }
         }
 
-        stage('Install Backend Dependencies') {
+        stage('Install Dependencies') {
             steps {
-                echo "📦 Installing backend deps..."
+                echo " Installing backend & frontend deps..."
+
                 dir('backend') {
                     sh 'npm install'
                 }
-            }
-        }
 
-        stage('Install Frontend Dependencies') {
-            steps {
-                echo "📦 Installing frontend deps..."
                 dir('frontend') {
                     sh 'npm install'
                 }
             }
         }
 
-        stage('Run Tests (Optional)') {
-            steps {
-                echo "🧪 Running tests..."
-                sh 'echo "No tests configured yet"'
-            }
-        }
-
-        stage('Build Docker Images') {
-            steps {
-                echo "🐳 Building Docker images..."
-                sh 'docker build -t $BACKEND_IMAGE ./backend'
-                sh 'docker build -t $FRONTEND_IMAGE ./frontend'
-            }
-        }
-
-        stage('Stop Old Containers') {
-            steps {
-                echo "🛑 Stopping old containers..."
-                sh 'docker-compose down || true'
-            }
-        }
-
         stage('Deploy with Docker Compose') {
             steps {
-                echo "🚀 Deploying application..."
+                echo " Deploying full stack..."
+
+                sh 'docker-compose down || true'
                 sh 'docker-compose up -d --build'
             }
         }
