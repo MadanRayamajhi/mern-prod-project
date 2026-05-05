@@ -1,8 +1,7 @@
 services:
   mongo:
-    image: mongo
-    ports:
-      - "27017:27017"
+  image: mongo
+  container_name: mongo
 
   backend:
     build: ./backend
