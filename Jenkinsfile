@@ -24,14 +24,13 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                script {
-                    // Using hyphenated docker-compose for older environments
-                    sh 'docker-compose down || true'
-                    sh 'docker-compose up --build -d'
-                }
-            }
+    steps {
+        script {
+            sh 'docker compose down || true'
+            sh 'docker compose up --build -d'
         }
+    }
+}
     }
 
     post {
