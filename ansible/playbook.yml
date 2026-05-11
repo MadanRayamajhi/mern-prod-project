@@ -1,0 +1,39 @@
+---
+- name: Deploy MERN Application to Kubernetes
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    project_path: "{{ playbook_dir }}/.."
+
+  tasks:
+    - name: Check kubectl connection
+      command: kubectl cluster-info
+      register: cluster_info
+      changed_when: false
+
+    - name: Show cluster info
+      debug:
+        var: cluster_info.stdout_lines
+
+    - name: Apply Kubernetes manifests
+      command: kubectl apply -f {{ project_path }}/k8s/
+      register: kubectl_apply
+
+    - name: Show apply output
+      debug:
+        var: kubectl_apply.stdout_lines
+
+    - name: Wait for deployments to be available
+      command: kubectl rollout status deployment/{{ item }}
+      loop:
+        - mongo
+        - backend
+        - frontend
+      register: rollout_status
+      changed_when: false
+
+    - name: Show rollout status
+      debug:
+        var: rollout_status.results

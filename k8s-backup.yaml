@@ -1,0 +1,1411 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-05-11T08:47:26Z"
+    generateName: backend-5b8c55789-
+    labels:
+      app: backend
+      pod-template-hash: 5b8c55789
+    name: backend-5b8c55789-hfq65
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: backend-5b8c55789
+      uid: 44bf4f03-9007-4153-bebd-b2afb8007c43
+    resourceVersion: "14897"
+    uid: d8906bc5-eabf-46a7-b867-0263763eae88
+  spec:
+    containers:
+    - env:
+      - name: MONGO_URL
+        value: mongodb://mongo-service:27017/mern
+      image: your-dockerhub-username/backend:latest
+      imagePullPolicy: Always
+      name: backend
+      ports:
+      - containerPort: 5000
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-qfjp5
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-qfjp5
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      message: 'containers with unready status: [backend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      message: 'containers with unready status: [backend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: your-dockerhub-username/backend:latest
+      imageID: ""
+      lastState: {}
+      name: backend
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: Back-off pulling image "your-dockerhub-username/backend:latest"
+          reason: ImagePullBackOff
+    hostIP: 192.168.49.2
+    phase: Pending
+    podIP: 10.244.0.24
+    podIPs:
+    - ip: 10.244.0.24
+    qosClass: BestEffort
+    startTime: "2026-05-11T08:47:26Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-05-11T08:47:26Z"
+    generateName: backend-5b8c55789-
+    labels:
+      app: backend
+      pod-template-hash: 5b8c55789
+    name: backend-5b8c55789-wbk85
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: backend-5b8c55789
+      uid: 44bf4f03-9007-4153-bebd-b2afb8007c43
+    resourceVersion: "14901"
+    uid: 71659df5-cf74-48b6-8bd1-2fd12b608903
+  spec:
+    containers:
+    - env:
+      - name: MONGO_URL
+        value: mongodb://mongo-service:27017/mern
+      image: your-dockerhub-username/backend:latest
+      imagePullPolicy: Always
+      name: backend
+      ports:
+      - containerPort: 5000
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r4w5g
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-r4w5g
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      message: 'containers with unready status: [backend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      message: 'containers with unready status: [backend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: your-dockerhub-username/backend:latest
+      imageID: ""
+      lastState: {}
+      name: backend
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: Back-off pulling image "your-dockerhub-username/backend:latest"
+          reason: ImagePullBackOff
+    hostIP: 192.168.49.2
+    phase: Pending
+    podIP: 10.244.0.23
+    podIPs:
+    - ip: 10.244.0.23
+    qosClass: BestEffort
+    startTime: "2026-05-11T08:47:26Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-05-11T08:47:26Z"
+    generateName: backend-795685bf6-
+    labels:
+      app: backend
+      pod-template-hash: 795685bf6
+    name: backend-795685bf6-4lckn
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: backend-795685bf6
+      uid: c5ba5afe-12b7-4c2a-ab9b-2ca72f7569cd
+    resourceVersion: "14927"
+    uid: 18bc12f4-722f-4a02-8b90-be6a281d3b9a
+  spec:
+    containers:
+    - env:
+      - name: MONGO_URL
+        value: mongodb://mongo-service:27017/mern
+      image: madanrayamajhi/backend:latest
+      imagePullPolicy: Always
+      name: backend
+      ports:
+      - containerPort: 5000
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-rrzw6
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-rrzw6
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      message: 'containers with unready status: [backend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      message: 'containers with unready status: [backend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:26Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: madanrayamajhi/backend:latest
+      imageID: ""
+      lastState: {}
+      name: backend
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: Back-off pulling image "madanrayamajhi/backend:latest"
+          reason: ImagePullBackOff
+    hostIP: 192.168.49.2
+    phase: Pending
+    podIP: 10.244.0.22
+    podIPs:
+    - ip: 10.244.0.22
+    qosClass: BestEffort
+    startTime: "2026-05-11T08:47:26Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-05-11T08:47:35Z"
+    generateName: frontend-7fc6c68d65-
+    labels:
+      app: frontend
+      pod-template-hash: 7fc6c68d65
+    name: frontend-7fc6c68d65-lrcmz
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: frontend-7fc6c68d65
+      uid: 826948a2-8bed-464f-8c22-eb6bf6ef094b
+    resourceVersion: "14924"
+    uid: b440be33-fc58-40e0-96b0-7ec3d7cfa2b6
+  spec:
+    containers:
+    - image: your-dockerhub-username/frontend:latest
+      imagePullPolicy: Always
+      name: frontend
+      ports:
+      - containerPort: 3000
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-4jmmz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-4jmmz
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      message: 'containers with unready status: [frontend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      message: 'containers with unready status: [frontend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: your-dockerhub-username/frontend:latest
+      imageID: ""
+      lastState: {}
+      name: frontend
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: Back-off pulling image "your-dockerhub-username/frontend:latest"
+          reason: ImagePullBackOff
+    hostIP: 192.168.49.2
+    phase: Pending
+    podIP: 10.244.0.26
+    podIPs:
+    - ip: 10.244.0.26
+    qosClass: BestEffort
+    startTime: "2026-05-11T08:47:35Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-05-11T08:47:35Z"
+    generateName: frontend-7fc6c68d65-
+    labels:
+      app: frontend
+      pod-template-hash: 7fc6c68d65
+    name: frontend-7fc6c68d65-s4lsk
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: frontend-7fc6c68d65
+      uid: 826948a2-8bed-464f-8c22-eb6bf6ef094b
+    resourceVersion: "14907"
+    uid: c3fed554-a1c8-48cc-8b99-07ed179785fb
+  spec:
+    containers:
+    - image: your-dockerhub-username/frontend:latest
+      imagePullPolicy: Always
+      name: frontend
+      ports:
+      - containerPort: 3000
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-k5zp5
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-k5zp5
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      message: 'containers with unready status: [frontend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      message: 'containers with unready status: [frontend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: your-dockerhub-username/frontend:latest
+      imageID: ""
+      lastState: {}
+      name: frontend
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: Back-off pulling image "your-dockerhub-username/frontend:latest"
+          reason: ImagePullBackOff
+    hostIP: 192.168.49.2
+    phase: Pending
+    podIP: 10.244.0.25
+    podIPs:
+    - ip: 10.244.0.25
+    qosClass: BestEffort
+    startTime: "2026-05-11T08:47:35Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-05-11T08:47:35Z"
+    generateName: frontend-86c476d658-
+    labels:
+      app: frontend
+      pod-template-hash: 86c476d658
+    name: frontend-86c476d658-fx2vk
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: frontend-86c476d658
+      uid: 200e2439-fee2-46e9-a510-32c9c01071c8
+    resourceVersion: "14943"
+    uid: dffc7009-4348-4e94-b0df-684b2b2a2599
+  spec:
+    containers:
+    - image: madanrayamajhi/frontend:latest
+      imagePullPolicy: Always
+      name: frontend
+      ports:
+      - containerPort: 3000
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5fhwh
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-5fhwh
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      message: 'containers with unready status: [frontend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      message: 'containers with unready status: [frontend]'
+      reason: ContainersNotReady
+      status: "False"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:47:35Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - image: madanrayamajhi/frontend:latest
+      imageID: ""
+      lastState: {}
+      name: frontend
+      ready: false
+      restartCount: 0
+      started: false
+      state:
+        waiting:
+          message: Back-off pulling image "madanrayamajhi/frontend:latest"
+          reason: ImagePullBackOff
+    hostIP: 192.168.49.2
+    phase: Pending
+    podIP: 10.244.0.27
+    podIPs:
+    - ip: 10.244.0.27
+    qosClass: BestEffort
+    startTime: "2026-05-11T08:47:35Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-05-07T09:55:02Z"
+    generateName: mongo-69b7d4c9fc-
+    labels:
+      app: mongo
+      pod-template-hash: 69b7d4c9fc
+    name: mongo-69b7d4c9fc-sp8d4
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: mongo-69b7d4c9fc
+      uid: 23ed32ca-ad82-4d54-b85b-0035634332dc
+    resourceVersion: "12112"
+    uid: 124e8639-29f6-424a-8a79-0274e5fbf1a5
+  spec:
+    containers:
+    - image: mongo:6
+      imagePullPolicy: IfNotPresent
+      name: mongo
+      ports:
+      - containerPort: 27017
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-pcc69
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: kube-api-access-pcc69
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-07T09:55:02Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:16:52Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-11T08:16:52Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-05-07T09:55:02Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://1d43f26b5d92c535ac292ba3324b7ca4399a2f2adfb258810a225f54288efa07
+      image: mongo:6
+      imageID: docker-pullable://mongo@sha256:03cda579c8caad6573cb98c2b3d5ff5ead452a6450561129b89595b4b9c18de2
+      lastState:
+        terminated:
+          containerID: docker://263658c0bc1ad94797c89109631fac0740616275791352819f5a34d27d2ed31d
+          exitCode: 0
+          finishedAt: "2026-05-07T13:02:42Z"
+          reason: Completed
+          startedAt: "2026-05-07T09:55:02Z"
+      name: mongo
+      ready: true
+      restartCount: 1
+      started: true
+      state:
+        running:
+          startedAt: "2026-05-11T08:16:50Z"
+    hostIP: 192.168.49.2
+    phase: Running
+    podIP: 10.244.0.15
+    podIPs:
+    - ip: 10.244.0.15
+    qosClass: BestEffort
+    startTime: "2026-05-07T09:55:02Z"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"backend-service","namespace":"default"},"spec":{"ports":[{"port":80,"targetPort":5000}],"selector":{"app":"backend"},"type":"ClusterIP"}}
+    creationTimestamp: "2026-05-07T09:36:30Z"
+    name: backend-service
+    namespace: default
+    resourceVersion: "4991"
+    uid: 959121d1-0c51-4e11-87fd-e521c73da954
+  spec:
+    clusterIP: 10.98.100.249
+    clusterIPs:
+    - 10.98.100.249
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 5000
+    selector:
+      app: backend
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"frontend-service","namespace":"default"},"spec":{"ports":[{"port":80,"targetPort":3000}],"selector":{"app":"frontend"},"type":"LoadBalancer"}}
+    creationTimestamp: "2026-05-07T09:36:30Z"
+    name: frontend-service
+    namespace: default
+    resourceVersion: "5003"
+    uid: 6cfdf768-5a6e-4635-baf9-67c5c9c7ac29
+  spec:
+    allocateLoadBalancerNodePorts: true
+    clusterIP: 10.110.47.238
+    clusterIPs:
+    - 10.110.47.238
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 31658
+      port: 80
+      protocol: TCP
+      targetPort: 3000
+    selector:
+      app: frontend
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2026-05-07T07:52:56Z"
+    labels:
+      component: apiserver
+      provider: kubernetes
+    name: kubernetes
+    namespace: default
+    resourceVersion: "194"
+    uid: 466abf08-32e1-45b7-a9fa-f07b81e3f99d
+  spec:
+    clusterIP: 10.96.0.1
+    clusterIPs:
+    - 10.96.0.1
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8443
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"mongo-service","namespace":"default"},"spec":{"ports":[{"port":27017,"targetPort":27017}],"selector":{"app":"mongo"},"type":"ClusterIP"}}
+    creationTimestamp: "2026-05-07T09:36:30Z"
+    name: mongo-service
+    namespace: default
+    resourceVersion: "5040"
+    uid: 0f2f4433-bc22-4365-bc0b-b45e8b7c686e
+  spec:
+    clusterIP: 10.109.118.182
+    clusterIPs:
+    - 10.109.118.182
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - port: 27017
+      protocol: TCP
+      targetPort: 27017
+    selector:
+      app: mongo
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "2"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"backend","namespace":"default"},"spec":{"replicas":2,"selector":{"matchLabels":{"app":"backend"}},"template":{"metadata":{"labels":{"app":"backend"}},"spec":{"containers":[{"env":[{"name":"MONGO_URL","value":"mongodb://mongo-service:27017/mern"}],"image":"madanrayamajhi/backend:latest","name":"backend","ports":[{"containerPort":5000}]}]}}}}
+    creationTimestamp: "2026-05-07T09:36:30Z"
+    generation: 2
+    name: backend
+    namespace: default
+    resourceVersion: "14591"
+    uid: a51ff089-e898-43ff-8000-c9a2aed84bc5
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: backend
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: backend
+      spec:
+        containers:
+        - env:
+          - name: MONGO_URL
+            value: mongodb://mongo-service:27017/mern
+          image: madanrayamajhi/backend:latest
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 5000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    conditions:
+    - lastTransitionTime: "2026-05-07T09:36:30Z"
+      lastUpdateTime: "2026-05-07T09:36:30Z"
+      message: Deployment does not have minimum availability.
+      reason: MinimumReplicasUnavailable
+      status: "False"
+      type: Available
+    - lastTransitionTime: "2026-05-11T08:58:31Z"
+      lastUpdateTime: "2026-05-11T08:58:31Z"
+      message: ReplicaSet "backend-795685bf6" has timed out progressing.
+      reason: ProgressDeadlineExceeded
+      status: "False"
+      type: Progressing
+    observedGeneration: 2
+    replicas: 3
+    unavailableReplicas: 3
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "2"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"frontend","namespace":"default"},"spec":{"replicas":2,"selector":{"matchLabels":{"app":"frontend"}},"template":{"metadata":{"labels":{"app":"frontend"}},"spec":{"containers":[{"image":"madanrayamajhi/frontend:latest","name":"frontend","ports":[{"containerPort":3000}]}]}}}}
+    creationTimestamp: "2026-05-07T09:36:30Z"
+    generation: 2
+    name: frontend
+    namespace: default
+    resourceVersion: "14597"
+    uid: 5d56c6a6-6da9-4dc4-bae0-492c9265c726
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 2
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: frontend
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: frontend
+      spec:
+        containers:
+        - image: madanrayamajhi/frontend:latest
+          imagePullPolicy: Always
+          name: frontend
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    conditions:
+    - lastTransitionTime: "2026-05-07T09:36:30Z"
+      lastUpdateTime: "2026-05-07T09:36:30Z"
+      message: Deployment does not have minimum availability.
+      reason: MinimumReplicasUnavailable
+      status: "False"
+      type: Available
+    - lastTransitionTime: "2026-05-11T08:58:40Z"
+      lastUpdateTime: "2026-05-11T08:58:40Z"
+      message: ReplicaSet "frontend-86c476d658" has timed out progressing.
+      reason: ProgressDeadlineExceeded
+      status: "False"
+      type: Progressing
+    observedGeneration: 2
+    replicas: 3
+    unavailableReplicas: 3
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "1"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"mongo","namespace":"default"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"mongo"}},"template":{"metadata":{"labels":{"app":"mongo"}},"spec":{"containers":[{"image":"mongo:6","name":"mongo","ports":[{"containerPort":27017}]}]}}}}
+    creationTimestamp: "2026-05-07T09:36:30Z"
+    generation: 1
+    name: mongo
+    namespace: default
+    resourceVersion: "6225"
+    uid: e4f3f2fd-76da-4d93-acee-c6c2d7f7edff
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: mongo
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: mongo
+      spec:
+        containers:
+        - image: mongo:6
+          imagePullPolicy: IfNotPresent
+          name: mongo
+          ports:
+          - containerPort: 27017
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-05-07T09:36:30Z"
+      lastUpdateTime: "2026-05-07T09:38:48Z"
+      message: ReplicaSet "mongo-69b7d4c9fc" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2026-05-07T09:55:03Z"
+      lastUpdateTime: "2026-05-07T09:55:03Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "2"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-05-07T09:36:30Z"
+    generation: 1
+    labels:
+      app: backend
+      pod-template-hash: 5b8c55789
+    name: backend-5b8c55789
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: backend
+      uid: a51ff089-e898-43ff-8000-c9a2aed84bc5
+    resourceVersion: "13786"
+    uid: 44bf4f03-9007-4153-bebd-b2afb8007c43
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: backend
+        pod-template-hash: 5b8c55789
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: backend
+          pod-template-hash: 5b8c55789
+      spec:
+        containers:
+        - env:
+          - name: MONGO_URL
+            value: mongodb://mongo-service:27017/mern
+          image: your-dockerhub-username/backend:latest
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 5000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    fullyLabeledReplicas: 2
+    observedGeneration: 1
+    replicas: 2
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "2"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2026-05-11T08:23:56Z"
+    generation: 1
+    labels:
+      app: backend
+      pod-template-hash: 795685bf6
+    name: backend-795685bf6
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: backend
+      uid: a51ff089-e898-43ff-8000-c9a2aed84bc5
+    resourceVersion: "13780"
+    uid: c5ba5afe-12b7-4c2a-ab9b-2ca72f7569cd
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: backend
+        pod-template-hash: 795685bf6
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: backend
+          pod-template-hash: 795685bf6
+      spec:
+        containers:
+        - env:
+          - name: MONGO_URL
+            value: mongodb://mongo-service:27017/mern
+          image: madanrayamajhi/backend:latest
+          imagePullPolicy: Always
+          name: backend
+          ports:
+          - containerPort: 5000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "2"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-05-07T09:36:30Z"
+    generation: 1
+    labels:
+      app: frontend
+      pod-template-hash: 7fc6c68d65
+    name: frontend-7fc6c68d65
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: frontend
+      uid: 5d56c6a6-6da9-4dc4-bae0-492c9265c726
+    resourceVersion: "13855"
+    uid: 826948a2-8bed-464f-8c22-eb6bf6ef094b
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: frontend
+        pod-template-hash: 7fc6c68d65
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: frontend
+          pod-template-hash: 7fc6c68d65
+      spec:
+        containers:
+        - image: your-dockerhub-username/frontend:latest
+          imagePullPolicy: Always
+          name: frontend
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    fullyLabeledReplicas: 2
+    observedGeneration: 1
+    replicas: 2
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "2"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2026-05-11T08:23:56Z"
+    generation: 1
+    labels:
+      app: frontend
+      pod-template-hash: 86c476d658
+    name: frontend-86c476d658
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: frontend
+      uid: 5d56c6a6-6da9-4dc4-bae0-492c9265c726
+    resourceVersion: "13864"
+    uid: 200e2439-fee2-46e9-a510-32c9c01071c8
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: frontend
+        pod-template-hash: 86c476d658
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: frontend
+          pod-template-hash: 86c476d658
+      spec:
+        containers:
+        - image: madanrayamajhi/frontend:latest
+          imagePullPolicy: Always
+          name: frontend
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    replicas: 1
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "1"
+      deployment.kubernetes.io/max-replicas: "2"
+      deployment.kubernetes.io/revision: "1"
+    creationTimestamp: "2026-05-07T09:36:30Z"
+    generation: 1
+    labels:
+      app: mongo
+      pod-template-hash: 69b7d4c9fc
+    name: mongo-69b7d4c9fc
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: mongo
+      uid: e4f3f2fd-76da-4d93-acee-c6c2d7f7edff
+    resourceVersion: "6223"
+    uid: 23ed32ca-ad82-4d54-b85b-0035634332dc
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: mongo
+        pod-template-hash: 69b7d4c9fc
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: mongo
+          pod-template-hash: 69b7d4c9fc
+      spec:
+        containers:
+        - image: mongo:6
+          imagePullPolicy: IfNotPresent
+          name: mongo
+          ports:
+          - containerPort: 27017
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    fullyLabeledReplicas: 1
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+kind: List
+metadata:
+  resourceVersion: ""
