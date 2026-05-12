@@ -1,19 +1,15 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18-alpine'
+            args '-u root'
+        }
+    }
 
     stages {
         stage('Checkout') {
             steps {
                 git url: 'https://github.com/MadanRayamajhi/mern-prod-project.git', branch: 'main'
-            }
-        }
-
-        stage('Install Node.js') {
-            steps {
-                sh '''
-                    curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
-                    apt-get install -y nodejs
-                '''
             }
         }
 
@@ -39,6 +35,23 @@ pipeline {
                     sh 'npm run build'
                 }
             }
+        }
+
+        stage('Docker Compose Deploy') {
+            steps {
+                sh 'apk add docker docker-compose || true'
+                sh 'docker-compose down || true'
+                sh 'docker-compose up --build -d'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Deployment Successful'
+        }
+        failure {
+            echo '❌ Deployment Failed'
         }
     }
 }
