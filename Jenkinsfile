@@ -5,14 +5,10 @@ pipeline {
         DOCKER_COMPOSE_COMMAND = "docker-compose"
     }
 
-    tools {
-        nodejs 'NodeJS-14'  
-    }
-
     stages {
         stage('Checkout Code') {
             steps {
-                git url: 'https://github.com/your-repo/mern-prod-project.git', branch: 'main'    
+                git url: 'https://github.com/MadanRayamajhi/mern-prod-project.git', branch: 'main'    
             }
         }
 
@@ -43,7 +39,7 @@ pipeline {
         stage('Docker Compose Deploy') {
             steps {
                 script {
-                    sh 'docker-compose down --volumes --remove-orphans || true'
+                    sh 'docker-compose down || true'
                     sh 'docker-compose up --build -d'
                 }
             }
@@ -51,16 +47,12 @@ pipeline {
     }
 
     post {
-        always {
-            cleanWs()  
-        }
         success {
             echo '✅ Deployment Successful'
-            echo 'Access at: http://localhost:3000 (Frontend) and http://localhost:5000 (Backend)'
+            echo 'Access at: http://localhost:3000'
         }
         failure {
             echo '❌ Deployment Failed'
-            sh 'docker-compose logs'
         }
     }
 }
