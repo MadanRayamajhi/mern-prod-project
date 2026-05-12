@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'NodeJS-18'
-    }
-
     stages {
         stage('Checkout') {
             steps {
@@ -12,7 +8,16 @@ pipeline {
             }
         }
 
-        stage('Install Backend') {
+        stage('Install Node.js') {
+            steps {
+                sh '''
+                    curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+                    apt-get install -y nodejs
+                '''
+            }
+        }
+
+        stage('Backend Install') {
             steps {
                 dir('backend') {
                     sh 'npm install'
@@ -20,7 +25,7 @@ pipeline {
             }
         }
 
-        stage('Install Frontend') {
+        stage('Frontend Install') {
             steps {
                 dir('frontend') {
                     sh 'npm install'
@@ -34,22 +39,6 @@ pipeline {
                     sh 'npm run build'
                 }
             }
-        }
-
-        stage('Docker Compose Deploy') {
-            steps {
-                sh 'docker-compose down || true'
-                sh 'docker-compose up --build -d'
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'Deployment Successful'
-        }
-        failure {
-            echo 'Deployment Failed'
         }
     }
 }
