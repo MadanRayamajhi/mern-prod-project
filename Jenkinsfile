@@ -2,21 +2,29 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
                 git url: 'https://github.com/MadanRayamajhi/mern-prod-project.git', branch: 'main'
             }
         }
 
-        stage('Install Node') {
+        stage('Install Node.js') {
             steps {
-                sh 'curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs'
+                sh 'apt-get update && apt-get install -y nodejs npm'
             }
         }
 
-        stage('Build Backend') {
+        stage('Install Backend') {
             steps {
                 dir('backend') {
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Install Frontend') {
+            steps {
+                dir('frontend') {
                     sh 'npm install'
                 }
             }
@@ -25,21 +33,24 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('frontend') {
-                    sh 'npm install && npm run build'
+                    sh 'npm run build'
                 }
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker-compose up -d --build'
+                sh 'docker compose up -d --build'
             }
         }
     }
 
     post {
         success {
-            echo '✅ DEPLOYED: http://localhost:3000'
+            echo '✅ Deployment Successful'
+        }
+        failure {
+            echo '❌ FAILED'
         }
     }
 }
