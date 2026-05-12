@@ -1,18 +1,18 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_COMPOSE_COMMAND = "docker-compose"
+    tools {
+        nodejs 'NodeJS-18'
     }
 
     stages {
-        stage('Checkout Code') {
+        stage('Checkout') {
             steps {
-                git url: 'https://github.com/MadanRayamajhi/mern-prod-project.git', branch: 'main'    
+                git url: 'https://github.com/MadanRayamajhi/mern-prod-project.git', branch: 'main'
             }
         }
 
-        stage('Install Backend Dependencies') {
+        stage('Install Backend') {
             steps {
                 dir('backend') {
                     sh 'npm install'
@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Install Frontend Dependencies') {
+        stage('Install Frontend') {
             steps {
                 dir('frontend') {
                     sh 'npm install'
@@ -31,28 +31,25 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('frontend') {
-                    sh 'npm run build'  
+                    sh 'npm run build'
                 }
             }
         }
 
         stage('Docker Compose Deploy') {
             steps {
-                script {
-                    sh 'docker-compose down || true'
-                    sh 'docker-compose up --build -d'
-                }
+                sh 'docker-compose down || true'
+                sh 'docker-compose up --build -d'
             }
         }
     }
 
     post {
         success {
-            echo '✅ Deployment Successful'
-            echo 'Access at: http://localhost:3000'
+            echo 'Deployment Successful'
         }
         failure {
-            echo '❌ Deployment Failed'
+            echo 'Deployment Failed'
         }
     }
 }
