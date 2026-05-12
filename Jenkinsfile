@@ -8,31 +8,38 @@ pipeline {
             }
         }
 
-        stage('Install Node.js') {
+        stage('Install Node') {
             steps {
-                sh 'curl -sL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh'
-                sh 'bash nodesource_setup.sh'
-                sh 'apt-get install -y nodejs'
+                sh 'curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Build Backend') {
             steps {
                 dir('backend') {
                     sh 'npm install'
                 }
+            }
+        }
+
+        stage('Build Frontend') {
+            steps {
                 dir('frontend') {
-                    sh 'npm install'
+                    sh 'npm install && npm run build'
                 }
             }
         }
 
-        stage('Build') {
+        stage('Deploy') {
             steps {
-                dir('frontend') {
-                    sh 'npm run build'
-                }
+                sh 'docker-compose up -d --build'
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ DEPLOYED: http://localhost:3000'
         }
     }
 }
