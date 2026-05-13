@@ -8,6 +8,12 @@ pipeline {
             }
         }
 
+        stage('Install Node.js') {
+            steps {
+                sh 'apt-get update && apt-get install -y nodejs npm'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 dir('backend') {
